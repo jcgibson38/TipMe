@@ -49,8 +49,9 @@ public class EditShiftFragment extends Fragment
     private Date date;
     private double hoursWorked;
     private int minutesWorked;
-
     private Shift mShift;
+
+    HomeDetailFragmentFull.OnDeleteListener mListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -68,6 +69,13 @@ public class EditShiftFragment extends Fragment
         hoursWorked = mShift.getHoursWorked();
         minutesWorked = mShift.getMinutesWorked();
         date = mShift.getDate();
+    }
+
+    @Override
+    public void onAttach(Activity activity)
+    {
+        super.onAttach(activity);
+        mListener = (HomeDetailFragmentFull.OnDeleteListener) activity;
     }
 
     @Override
@@ -265,52 +273,26 @@ public class EditShiftFragment extends Fragment
                 FragmentCheck.changeFragment(getActivity().getSupportFragmentManager(), new HomeFragment(), FragmentCheck.HOME_FRAGMENT_CALENDAR);
                 return true;
             case R.id.accept_button:
-                //Set new shifts values and calculate.
-                if(cashTips.equals(""))
-                {
-                    mShift.setCashTips(0.00);
-                }
-                else
-                {
-                    mShift.setCashTips(Double.parseDouble(cashTips));
-                }
-                if(creditTips.equals(""))
-                {
-                    mShift.setCreditTips(0.00);
-                }
-                else
-                {
-                    mShift.setCreditTips(Double.parseDouble(creditTips));
-                }
-                if(tipOut.equals(""))
-                {
-                    mShift.setTipOut(0.00);
-                }
-                else
-                {
-                    mShift.setTipOut(Double.parseDouble(tipOut));
-                }
-                if(totalSales.equals(""))
-                {
-                    mShift.setTotalSales(0.00);
-                }
-                else
-                {
-                    mShift.setTotalSales(Double.parseDouble(totalSales));
-                }
+                //Find the old shift.
+                Shift shift = HomeActivity.getShift();
 
-                //Set hours worked.
-                double whole = mHoursWorkedNumberPicker.getCurrentValue();
-                double part = mMinutesWorkedNumberPicker.getCurrentValue();
-                double decimal = part / 60;
-                mShift.setHoursWorked(whole + decimal);
+                //Delete the shift from the database.
+                DatabaseHandler db = new DatabaseHandler(getActivity());
+                db.deleteShift(shift);
+                db.close();
+
+                //Delete the shift from the shiftRegister.
+                ShiftRegister.get(getActivity()).deleteShift(shift);
+
+                //Set new shifts values and calculate.
+                mShift.finalizeShift(cashTips,creditTips, tipOut, totalSales, date, (double)mHoursWorkedNumberPicker.getCurrentValue(), (double)mMinutesWorkedNumberPicker.getCurrentValue());
 
                 //Edit the shift in the shiftregister.
                 ShiftRegister.get(getActivity()).updateShift(mShift);
 
                 //Edit the shift in the database.
-                DatabaseHandler db = new DatabaseHandler(getActivity());
                 db.updateShift(mShift);
+                db.close();
 
                 //Revert to the home fragment.
                 FragmentCheck.changeFragment(getActivity().getSupportFragmentManager(), new HomeFragment(), FragmentCheck.HOME_FRAGMENT_CALENDAR);
@@ -338,7 +320,6 @@ public class EditShiftFragment extends Fragment
         if(requestCode == REQUEST_DATE)
         {
             date = (Date)data.getSerializableExtra(FragmentCheck.EXTRA_DATE_TAG);
-            mShift.setDate(date);
             updateDate();
         }
     }

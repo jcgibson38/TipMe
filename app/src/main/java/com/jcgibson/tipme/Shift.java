@@ -257,6 +257,50 @@ public class Shift implements Parcelable
         return df.format(mPercentOfSales);
     }
 
+    public void finalizeShift(String cashTips, String creditTips, String tipOut, String totalSales, Date date, Double hoursWorked, Double minutesWorked)
+    {
+        if(cashTips.equals(""))
+        {
+            setCashTips(0.00);
+        }
+        else
+        {
+            setCashTips(Double.parseDouble(cashTips));
+        }
+
+        if(creditTips.equals(""))
+        {
+            setCreditTips(0.00);
+        }
+        else
+        {
+            setCreditTips(Double.parseDouble(creditTips));
+        }
+
+        if(tipOut.equals(""))
+        {
+            setTipOut(0.00);
+        }
+        else
+        {
+            setTipOut(Double.parseDouble(tipOut));
+        }
+
+        if(totalSales.equals(""))
+        {
+            setTotalSales(0.00);
+        }
+        else
+        {
+            setTotalSales(Double.parseDouble(totalSales));
+        }
+
+        setDate(date);
+
+        double decimal = minutesWorked / 60;
+        setHoursWorked(hoursWorked + decimal);
+    }
+
     /*
     * Parcelable interface
     * */

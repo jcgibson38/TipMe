@@ -257,45 +257,7 @@ public class AddShiftFragment extends Fragment
                 return true;
             case R.id.accept_button:
                 //Set new shifts values and calculate.
-                if(cashTips.equals(""))
-                {
-                    mShift.setCashTips(0.00);
-                }
-                else
-                {
-                    mShift.setCashTips(Double.parseDouble(cashTips));
-                }
-                if(creditTips.equals(""))
-                {
-                    mShift.setCreditTips(0.00);
-                }
-                else
-                {
-                    mShift.setCreditTips(Double.parseDouble(creditTips));
-                }
-                if(tipOut.equals(""))
-                {
-                    mShift.setTipOut(0.00);
-                }
-                else
-                {
-                    mShift.setTipOut(Double.parseDouble(tipOut));
-                }
-                if(totalSales.equals(""))
-                {
-                    mShift.setTotalSales(0.00);
-                }
-                else
-                {
-                    mShift.setTotalSales(Double.parseDouble(totalSales));
-                }
-                mShift.setDate(mDate);
-
-                //Get time worked.
-                double whole = mHoursWorkedNumberPicker.getCurrentValue();
-                double part = mMinutesWorkedNumberPicker.getCurrentValue();
-                double decimal = part / 60;
-                mShift.setHoursWorked(whole + decimal);
+                mShift.finalizeShift(cashTips, creditTips, tipOut, totalSales, mDate, (double)mHoursWorkedNumberPicker.getCurrentValue(), (double)mMinutesWorkedNumberPicker.getCurrentValue());
 
                 //Add the new shift to the shift register.
                 ShiftRegister.get(getActivity()).addShift(mShift);
@@ -335,6 +297,10 @@ public class AddShiftFragment extends Fragment
             updateDate();
         }
     }
+
+    /*
+    * Other methods
+    * */
 
     public void updateDate()
     {
