@@ -63,6 +63,7 @@ public class Shift implements Parcelable
 
     /*
     * Calculable Values
+    *   Methods for calculating data based on user supplied information.
     *
     *   Percent Of Sales (mPercentOfSales)
     *   Total Tips (mTotalTips)
@@ -80,23 +81,13 @@ public class Shift implements Parcelable
     }
 
     /*
-    * **Getters and Setters**
+    * Getters
     * */
 
     public double getPercentOfSales()
     {
         calculatePercentOfSales();
         return mPercentOfSales;
-    }
-
-    public void setPercentOfSales(double percentOfSales)
-    {
-        mPercentOfSales = percentOfSales;
-    }
-
-    public void setTotalTips(double totalTips)
-    {
-        mTotalTips = totalTips;
     }
 
     public double getTotalTips()
@@ -108,11 +99,6 @@ public class Shift implements Parcelable
     public double getTotalSales()
     {
         return mTotalSales;
-    }
-
-    public void setTotalSales(double totalSales)
-    {
-        mTotalSales = totalSales;
     }
 
     public double getCashTips()
@@ -130,6 +116,51 @@ public class Shift implements Parcelable
         return mTipOut;
     }
 
+    public Date getDate()
+    {
+        return mDate;
+    }
+
+    public double getHoursWorked()
+    {
+        return mHoursWorked;
+    }
+
+    public int getMinutesWorked()
+    {
+        double minutes = mHoursWorked - ((int)mHoursWorked);
+        return (int)(minutes * 60);
+    }
+
+    public Double getHourlyWage()
+    {
+        return ((mCashTips + mCreditTips) - mTipOut) / mHoursWorked;
+    }
+
+    public int getId()
+    {
+        return _id;
+    }
+
+    /*
+    * Setters
+    * */
+
+    public void setPercentOfSales(double percentOfSales)
+    {
+        mPercentOfSales = percentOfSales;
+    }
+
+    public void setTotalTips(double totalTips)
+    {
+        mTotalTips = totalTips;
+    }
+
+    public void setTotalSales(double totalSales)
+    {
+        mTotalSales = totalSales;
+    }
+
     public void setCashTips(double cashTips)
     {
         mCashTips = cashTips;
@@ -145,31 +176,9 @@ public class Shift implements Parcelable
         mTipOut = tipOut;
     }
 
-    public Date getDate()
-    {
-        return mDate;
-    }
-
-    public String getDateAsString()
-    {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
-        return sdf.format(mDate);
-    }
-
     public void setDate(Date mDate)
     {
         this.mDate = mDate;
-    }
-
-    public double getHoursWorked()
-    {
-        return mHoursWorked;
-    }
-
-    public int getMinutesWorked()
-    {
-        double minutes = mHoursWorked - ((int)mHoursWorked);
-        return (int)(minutes * 60);
     }
 
     public void setHoursWorked(double mHoursWorked)
@@ -177,19 +186,24 @@ public class Shift implements Parcelable
         this.mHoursWorked = mHoursWorked;
     }
 
-    public Double getHourlyWage()
+    public void setId(long id)
     {
-        return ((mCashTips + mCreditTips) - mTipOut) / mHoursWorked;
+        _id = Integer.parseInt(Long.toString(id));
+    }
+
+    /*
+    * Other Methods.
+    * */
+
+    public String getDateAsString()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+        return sdf.format(mDate);
     }
 
     public Long getDateAsLong()
     {
         return mDate.getTime();
-    }
-
-    public int getId()
-    {
-        return _id;
     }
 
     public String displayTotalTips()
@@ -208,11 +222,6 @@ public class Shift implements Parcelable
     {
         DecimalFormat df = new DecimalFormat("#.00");
         return df.format(((mCashTips + mCreditTips) - mTipOut) / mHoursWorked);
-    }
-
-    public void setId(long id)
-    {
-        _id = Integer.parseInt(Long.toString(id));
     }
 
     public String displayCashTips()
@@ -247,7 +256,7 @@ public class Shift implements Parcelable
     }
 
     /*
-    * **Parcelable interface.**
+    * Parcelable interface
     * */
 
     //Create Shift from Parcel.
