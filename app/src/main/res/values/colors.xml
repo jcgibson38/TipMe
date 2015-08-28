@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="text_primary" type="color">#000000</item>
+    <item name="text_secondary" type="color">#757575</item>
+    <item name="text_white" type="color">#FFFFFF</item>
+
+    <item name="lower_elevation_gray" type="color">#7E57C2</item>
+
+    <item name="main_background" type="color">#7E57C2</item>
+    <item name="label_color" type="color">#80FFFFFF</item>
+    <item name="value_color" type="color">#FFFFFFFF</item>
+
+    <item name="toolbar_background" type="color">#7E57C2</item>
+    <item name="actionbar_background" type="color">#673AB7</item>
+    <item name="accent" type="color">#8C9Eff</item>
+
+</resources>

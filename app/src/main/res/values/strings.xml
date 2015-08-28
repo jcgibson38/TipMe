@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Tip Me</string>
+    <string-array name="timePeriodsArray">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
+
+</resources>

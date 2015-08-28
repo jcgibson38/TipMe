@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:layout_gravity="center">
+
+    <com.jcgibson.graphwidgets.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:circleSize="4"
+        android:layout_gravity="center_horizontal"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:id="@+id/totalTipsValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100.00"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/value_color"
+            android:textSize="60sp"
+            android:layout_marginBottom="-10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textColor="@color/value_color"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@id/totalTipsValue"
+            android:layout_toStartOf="@id/totalTipsValue"
+            android:paddingTop="12dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/percentOfSalesValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--.--%"
+            android:textColor="@color/value_color"
+            android:textSize="26sp"/>
+
+        <TextView
+            android:id="@+id/middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" of "
+            android:textColor="@color/label_color"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/totalSalesValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$--.--"
+            android:textColor="@color/value_color"
+            android:textSize="26sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" in sales."
+            android:textColor="@color/label_color"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/cashTipsColorSplotch"
+            android:paddingLeft="16dp"
+            android:paddingRight="32dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/color_splotch_cash"/>
+
+        <TextView
+            android:id="@+id/cashTipsLabel"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cash Tips"
+            android:textColor="@color/label_color"
+            android:layout_toRightOf="@id/cashTipsColorSplotch"
+            android:layout_toEndOf="@id/cashTipsColorSplotch"/>
+
+        <TextView
+            android:id="@+id/cashTipsValue"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100.00"
+            android:layout_below="@id/cashTipsLabel"
+            android:layout_toRightOf="@id/cashTipsColorSplotch"
+            android:layout_toEndOf="@id/cashTipsColorSplotch"
+            android:textColor="@color/value_color"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/creditTipsColorSplotch"
+            android:paddingLeft="16dp"
+            android:paddingRight="32dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/color_splotch_credit"/>
+
+        <TextView
+            android:id="@+id/creditTipsLabel"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credit Tips"
+            android:textColor="@color/label_color"
+            android:layout_toRightOf="@id/creditTipsColorSplotch"
+            android:layout_toEndOf="@id/creditTipsColorSplotch"/>
+
+        <TextView
+            android:id="@+id/creditTipsValue"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100.00"
+            android:layout_below="@id/creditTipsLabel"
+            android:layout_toRightOf="@id/creditTipsColorSplotch"
+            android:layout_toEndOf="@id/creditTipsColorSplotch"
+            android:textColor="@color/value_color"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/tipoutTipsColorSplotch"
+            android:paddingLeft="16dp"
+            android:paddingRight="32dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/color_splotch_tipout"/>
+
+        <TextView
+            android:id="@+id/tipoutTipsLabel"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tip Out"
+            android:textColor="@color/label_color"
+            android:layout_toRightOf="@id/tipoutTipsColorSplotch"
+            android:layout_toEndOf="@id/tipoutTipsColorSplotch"/>
+
+        <TextView
+            android:id="@+id/tipoutTipsValue"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100.00"
+            android:layout_below="@id/tipoutTipsLabel"
+            android:layout_toRightOf="@id/tipoutTipsColorSplotch"
+            android:layout_toEndOf="@id/tipoutTipsColorSplotch"
+            android:textColor="@color/value_color"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

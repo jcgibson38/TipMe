@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This is the view of the AddShiftFragment.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:background="@color/lower_elevation_gray"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/cash_tips_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+            <TextView
+                android:id="@+id/cash_tips_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cash Tips"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#80FFFFFF"/>
+
+            <EditText
+                android:id="@+id/cash_tips_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="64dp"
+                android:layout_below="@id/cash_tips_textView"
+                android:hint="0.00"
+                android:inputType="numberDecimal"
+                android:textColorHint="#80FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:paddingTop="0dp"
+                android:paddingLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/cashCurrencyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="#80FFFFFF"
+                android:textSize="26sp"
+                android:layout_alignLeft="@id/cash_tips_editText"
+                android:layout_alignBaseline="@id/cash_tips_editText"
+                android:visibility="visible"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/credit_tips_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/cash_tips_layout">
+
+            <TextView
+                android:id="@+id/credit_tips_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Credit Tips"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#80FFFFFF"/>
+
+            <EditText
+                android:id="@+id/credit_tips_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="64dp"
+                android:layout_below="@id/credit_tips_textView"
+                android:hint="0.00"
+                android:inputType="numberDecimal"
+                android:textColorHint="#80FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:paddingTop="0dp"
+                android:paddingLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/creditCurrencyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="#80FFFFFF"
+                android:textSize="26sp"
+                android:layout_alignLeft="@id/credit_tips_editText"
+                android:layout_alignBaseline="@id/credit_tips_editText"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tip_out_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/credit_tips_layout">
+
+            <TextView
+                android:id="@+id/tip_out_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tip Out"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#80FFFFFF"/>
+
+            <EditText
+                android:id="@+id/tip_out_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="64dp"
+                android:layout_below="@id/tip_out_textView"
+                android:hint="0.00"
+                android:inputType="numberDecimal"
+                android:textColorHint="#80FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:paddingTop="0dp"
+                android:paddingLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/tipOutTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="#80FFFFFF"
+                android:textSize="26sp"
+                android:layout_alignLeft="@id/tip_out_editText"
+                android:layout_alignBaseline="@id/tip_out_editText"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hours_worked_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/tip_out_layout">
+
+            <TextView
+                android:id="@+id/hours_worked_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hours Worked"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#80FFFFFF"/>
+
+            <LinearLayout
+                android:id="@+id/hoursMinutesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hours_worked_textView"
+                android:gravity="center_horizontal">
+
+                <com.jcgibson.customwidgets.NumberPicker
+                    android:id="@+id/hoursWorkedPicker"
+                    android:layout_below="@id/hours_worked_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    custom:textColor="#FFFFFF"
+                    custom:minValue="1"
+                    custom:maxValue="10"
+                    custom:incValue="1"
+                    custom:buttonBackgroundColor="#7E57C2"
+                    custom:arrowColor="#FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/hoursWorkedLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="hours"
+                    android:textColor="#80FFFFFF"
+                    android:layout_gravity="center_vertical"/>
+
+                <com.jcgibson.customwidgets.NumberPicker
+                    android:id="@+id/minutesWorkedPicker"
+                    android:layout_below="@id/hours_worked_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    custom:textColor="#FFFFFF"
+                    custom:minValue="0"
+                    custom:maxValue="45"
+                    custom:incValue="15"
+                    custom:buttonBackgroundColor="#7E57C2"
+                    custom:arrowColor="#FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/minutesWorkedLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="minutes"
+                    android:textColor="#80FFFFFF"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/totalSalesLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/hours_worked_layout">
+
+            <TextView
+                android:id="@+id/totalSalesLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Sales"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#80FFFFFF"/>
+
+            <EditText
+                android:id="@+id/totalSalesData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="64dp"
+                android:layout_below="@id/totalSalesLabel"
+                android:hint="0.00"
+                android:inputType="numberDecimal"
+                android:textColorHint="#80FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:paddingTop="0dp"
+                android:paddingLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/totalSalesCurrencyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="#80FFFFFF"
+                android:textSize="26sp"
+                android:layout_alignLeft="@id/totalSalesData"
+                android:layout_alignBaseline="@id/totalSalesData"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tipDateLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@id/totalSalesLayout">
+
+            <Button
+                android:id="@+id/tipDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
+                android:padding="16dp"
+                android:text="Date"
+                android:backgroundTint="@color/text_white"
+                android:textColor="@color/lower_elevation_gray"
+                android:textSize="26sp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

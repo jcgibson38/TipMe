@@ -1,0 +1,17 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.jcgibson.customwidgets.NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:textColor="#000000"
+        custom:arrowColor="#000000"
+        custom:minValue="0"
+        custom:maxValue="45"
+        custom:incValue="15"
+        custom:buttonBackgroundColor="#FFFFFF"/>
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NumberPicker">
+        <attr name="textColor" format="string"/>
+        <attr name="arrowColor" format="string"/>
+        <attr name="minValue" format="integer"/>
+        <attr name="maxValue" format="integer"/>
+        <attr name="incValue" format="integer"/>
+        <attr name="buttonBackgroundColor" format="string"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/incButton"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_expand_less_white_24dp"
+        tools:tint="#BB8024"/>
+
+    <TextView
+        android:id="@+id/numberTextView"
+        android:layout_below="@id/incButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        tools:text="10"/>
+
+    <ImageView
+        android:id="@+id/decButton"
+        android:padding="8dp"
+        android:layout_below="@id/numberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_expand_more_white_24dp"
+        tools:tint="#BB8024"/>
+
+</RelativeLayout>

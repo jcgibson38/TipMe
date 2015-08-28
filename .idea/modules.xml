@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TipMe.iml" filepath="$PROJECT_DIR$/TipMe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/graphwidget/graphwidget.iml" filepath="$PROJECT_DIR$/graphwidget/graphwidget.iml" />
+      <module fileurl="file://$PROJECT_DIR$/numberpicker/numberpicker.iml" filepath="$PROJECT_DIR$/numberpicker/numberpicker.iml" />
+    </modules>
+  </component>
+</project>

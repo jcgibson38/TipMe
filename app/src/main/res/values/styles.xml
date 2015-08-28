@@ -1,0 +1,68 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:colorPrimary">@color/toolbar_background</item>
+        <item name="android:colorPrimaryDark">@color/actionbar_background</item>
+
+        <item name="android:toolbarStyle">@style/MyToolbarStyle</item>
+        <item name="toolbarStyle">@style/MyToolbarStyle</item>
+
+        <!--Configures some of edit text-->
+        <item name="colorControlNormal">#80FFFFFF</item>
+        <item name="colorControlActivated">#FFFFFFFF</item>
+        <item name="colorControlHighlight">#FFFFFFFF</item>
+
+    </style>
+
+    <style name="MyToolbarStyle" parent="Widget.AppCompat.Toolbar">
+
+        <item name="titleTextStyle">@style/MyActionBarTitleText</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+
+    </style>
+
+    <style name="MyActionBarTitleText" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+
+    </style>
+
+    <style name="MyCategoryLabelStyle" parent="TextAppearance.AppCompat.Caption">
+
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:padding">16dp</item>
+
+    </style>
+
+    <style name="MyListPrimaryText" parent="TextAppearance.AppCompat.Title">
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="MyListSecondaryText" parent="TextAppearance.AppCompat.Subhead">
+
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+</resources>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="0dp"
+    android:background="@color/lower_elevation_gray">
+
+    <ImageView
+        android:id="@+id/popup_menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu_black_24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:padding="12dp"
+        android:tint="@color/text_white"/>
+
+    <TextView
+        android:id="@+id/dateValueTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        style="@style/MyCategoryLabelStyle"
+        android:gravity="center_horizontal"
+        android:textColor="#80FFFFFF"/>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/totalValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="60sp"
+            android:text="888.88"
+            android:textColor="#FFFFFFFF"
+            android:paddingBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/totalValueTextView"
+            android:layout_toLeftOf="@id/totalValueTextView"
+            android:layout_toStartOf="@id/totalValueTextView"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:text="$"
+            android:textColor="#FFFFFFFF"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/totalValueTextView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/hoursWorkedLabelTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Hours Worked"
+                    android:gravity="center"
+                    android:textColor="#80FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/percentOfSalesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Percent of Sales"
+                    android:gravity="center"
+                    android:textColor="#80FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/hourlyWageLabelTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Hourly Wage"
+                    android:gravity="center"
+                    android:textColor="#80FFFFFF"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/hoursWorkedValueTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="12.5"
+                    android:gravity="center"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/percenOfSalesData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="50.00%"
+                    android:gravity="center"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/hourlyWageValueTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="$25.22"
+                    android:gravity="center"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
