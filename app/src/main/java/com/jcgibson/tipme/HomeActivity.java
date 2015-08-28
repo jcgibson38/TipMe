@@ -10,7 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
-* **This is the home screen activity.**
+* The launcher Activity, which hosts the HomeFragment.
+*
 * */
 
 public class HomeActivity extends AppCompatActivity implements HomeFragment.OnDateSelectedListener, HomeDetailFragmentFull.OnDeleteListener
@@ -33,15 +34,37 @@ public class HomeActivity extends AppCompatActivity implements HomeFragment.OnDa
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
+        //Inflate the HomeFragment.
         FragmentManager fm = getSupportFragmentManager();
         Fragment f = fm.findFragmentById(R.id.fragment_container_frameLayout);
-
         if(f == null)
         {
             f = new HomeFragment();
             fm.beginTransaction().add(R.id.fragment_container_frameLayout, f, FragmentCheck.HOME_FRAGMENT_CALENDAR).commit();
         }
     }
+
+    /*
+    * Getters
+    * */
+
+    public static Date getDate()
+    {
+        return sCurrentDate;
+    }
+
+    public static Shift getShift()
+    {
+        return sCurrentShift;
+    }
+
+    /*
+    * Setters
+    * */
+
+    /*
+    * Interface
+    * */
 
     @Override
     public void onShiftFound(Date date, Shift shift)
@@ -54,22 +77,6 @@ public class HomeActivity extends AppCompatActivity implements HomeFragment.OnDa
     public void onDateSelected(Date date)
     {
         sCurrentDate = date;
-    }
-
-    public static Date getDate()
-    {
-        return sCurrentDate;
-    }
-
-    public static String getDateAsString()
-    {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
-        return sdf.format(sCurrentDate);
-    }
-
-    public static Shift getShift()
-    {
-        return sCurrentShift;
     }
 
     @Override
@@ -86,5 +93,15 @@ public class HomeActivity extends AppCompatActivity implements HomeFragment.OnDa
         FragmentManager fm = getSupportFragmentManager();
         HomeFragment f = (HomeFragment)fm.findFragmentByTag(FragmentCheck.HOME_FRAGMENT_CALENDAR);
         f.decorate();
+    }
+
+    /*
+    * Other methods
+    * */
+
+    public static String getDateAsString()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+        return sdf.format(sCurrentDate);
     }
 }

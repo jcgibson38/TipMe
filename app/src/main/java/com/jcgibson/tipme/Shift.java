@@ -62,8 +62,7 @@ public class Shift implements Parcelable
     }
 
     /*
-    * Calculable Values
-    *   Methods for calculating data based on user supplied information.
+    * Methods for calculating data based on user supplied information.
     *
     *   Percent Of Sales (mPercentOfSales)
     *   Total Tips (mTotalTips)
@@ -164,16 +163,19 @@ public class Shift implements Parcelable
     public void setCashTips(double cashTips)
     {
         mCashTips = cashTips;
+        calculateTotalTips();
     }
 
     public void setCreditTips(double creditTips)
     {
         mCreditTips = creditTips;
+        calculateTotalTips();
     }
 
     public void setTipOut(double tipOut)
     {
         mTipOut = tipOut;
+        calculateTotalTips();
     }
 
     public void setDate(Date mDate)

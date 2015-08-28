@@ -1,13 +1,9 @@
 package com.jcgibson.tipme;
 
 import android.content.Context;
-import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Jordan on 7/20/2015.
@@ -20,7 +16,7 @@ public class ShiftRegister
 
     private Context mContext;
 
-    private List<Shift> mShifts;
+    private Map<Date, Shift> mShiftMap;
 
     /*
     * ShiftRegister constructor.
@@ -33,11 +29,11 @@ public class ShiftRegister
         DatabaseHandler db = new DatabaseHandler(context);
         if(db.getShiftsCount() != 0)
         {
-            mShifts = db.getAllShifts();
+            mShiftMap = db.getAllMapShifts();
         }
         else
         {
-            mShifts = new ArrayList<>();
+            mShiftMap = new android.support.v4.util.ArrayMap<>();
         }
         db.close();
     }
@@ -58,9 +54,9 @@ public class ShiftRegister
     * Getters
     * */
 
-    public List<Shift> getShifts()
+    public Map<Date, Shift> getShifts()
     {
-        return mShifts;
+        return mShiftMap;
     }
 
     /*
@@ -73,45 +69,28 @@ public class ShiftRegister
 
     public void addShift(Shift shift)
     {
-        mShifts.add(shift);
+        mShiftMap.put(shift.getDate(), shift);
     }
 
     public void deleteShift(Shift shift)
     {
-        mShifts.remove(shift);
+        mShiftMap.remove(shift.getDate());
     }
 
     /*
-    * This method looks through the ShiftRegister for a Shift that matches the specified date.
+    * This method looks up a Shift that matches the specified date.
     *
     * @param date -> The date to compare to the dates of the Shifts in the ShiftRegister looking for a matching date.
     * */
-    public Shift lookupShiftByDate(Date date)
+
+    public Shift lookupShift(Date date)
     {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-
-        for(Shift s : mShifts)
-        {
-            Calendar scal = Calendar.getInstance();
-            scal.setTime(s.getDate());
-
-            if((cal.get(Calendar.YEAR) == scal.get(Calendar.YEAR)) && (cal.get(Calendar.MONTH) == scal.get(Calendar.MONTH)) && (cal.get(Calendar.DAY_OF_MONTH) == scal.get(Calendar.DAY_OF_MONTH)))
-            {
-                return s;
-            }
-        }
-        return null;
+        return mShiftMap.get(date);
     }
 
     public void updateShift(Shift shift)
     {
-        for(Shift s : mShifts)
-        {
-            if(s.getId() == shift.getId())
-            {
-                s = shift;
-            }
-        }
+        mShiftMap.remove(shift.getDate());
+        mShiftMap.put(shift.getDate(), shift);
     }
 }

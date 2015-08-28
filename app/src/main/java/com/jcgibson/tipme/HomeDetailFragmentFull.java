@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import java.util.Date;
-
 /**
  * Created by Jordan on 7/20/2015.
+ *
+ * This is the DetailFragment that displays for a date when there is an existing Shift corresponding to that date.
  */
 public class HomeDetailFragmentFull extends Fragment
 {
@@ -111,10 +110,6 @@ public class HomeDetailFragmentFull extends Fragment
                 }
             }
         });
-
-        /*
-        * **Display**
-        * */
 
         //Display today's date.
         mTodayLabelTextView = (TextView)v.findViewById(R.id.dateValueTextView);

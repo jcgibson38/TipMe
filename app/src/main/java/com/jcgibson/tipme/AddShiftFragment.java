@@ -56,10 +56,8 @@ public class AddShiftFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        //Enable options menu.
         setHasOptionsMenu(true);
 
-        //Initialize Variables.
         mShift = new Shift();
     }
 

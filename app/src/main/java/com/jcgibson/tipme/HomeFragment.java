@@ -3,6 +3,7 @@ package com.jcgibson.tipme;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,7 @@ import java.util.Date;
 /**
  * Created by Jordan on 7/20/2015.
  *
- * This is the home fragment to be hosted by HomeActivity.
+ * This is the home fragment holding the Calendar, to be hosted by HomeActivity.
  */
 public class HomeFragment extends Fragment
 {
@@ -68,7 +69,7 @@ public class HomeFragment extends Fragment
         mCalendarView.setOnDateChangedListener(new OnDateChangedListener()
         {
             @Override
-            public void onDateChanged(MaterialCalendarView materialCalendarView, CalendarDay calendarDay)
+            public void onDateChanged(@NonNull MaterialCalendarView materialCalendarView, CalendarDay calendarDay)
             {
                 mCalendar = calendarDay.getCalendar();
                 mDate = mCalendar.getTime();
@@ -83,14 +84,19 @@ public class HomeFragment extends Fragment
         return v;
     }
 
+    /*
+    * The method to decorate the Calendar View.
+    * */
     public void decorate()
     {
         DayViewDecorator decorator = new DayViewDecorator()
         {
+            //Return true if Date should be decorated, or false if not.
             @Override
             public boolean shouldDecorate(CalendarDay calendarDay)
             {
-                if((ShiftRegister.get(getActivity()).lookupShiftByDate(calendarDay.getDate())) != null)
+                Shift shift = ShiftRegister.get(getActivity()).lookupShift(calendarDay.getDate());
+                if(shift != null)
                 {
                     return true;
                 }
@@ -113,17 +119,24 @@ public class HomeFragment extends Fragment
         mCalendarView.removeDecorators();
     }
 
-    //Checks whether the date selected in the CalendarView has a shift logged, and displays the necessary fragment for the detail view.
+    /*
+    * Checks whether the date selected in the CalendarView has a corresponding Shift logged,
+    * and displays the necessary fragment in the detail view.
+    *
+    * @param date -> The date selected in the Calendar.
+    * */
     public void setShiftDetails(Date date)
     {
-        Shift shift;
-        if((shift = ShiftRegister.get(getActivity()).lookupShiftByDate(date)) != null)
+        Shift shift = ShiftRegister.get(getActivity()).lookupShift(date);
+
+        if(shift != null)
         {
+            //Callback to update Activity.
             mListener.onShiftFound(mDate, shift);
 
+            //Shift was found for this Date, so show HomeDetailFragmentFull.
             FragmentManager fm = getActivity().getSupportFragmentManager();
             Fragment f = fm.findFragmentById(R.id.home_detail_fragment_container);
-
             if(f == null)
             {
                 f = new HomeDetailFragmentFull();
@@ -136,9 +149,9 @@ public class HomeFragment extends Fragment
         }
         else
         {
+            //No shift for this Date so show HomeDetailFragmentEmpty.
             FragmentManager fm = getActivity().getSupportFragmentManager();
             Fragment f = fm.findFragmentById(R.id.home_detail_fragment_container);
-
             if(f == null)
             {
                 f = new HomeDetailFragmentEmpty();
@@ -167,59 +180,4 @@ public class HomeFragment extends Fragment
         super.onAttach(activity);
         mListener = (OnDateSelectedListener) activity;
     }
-
-    /*
-    * **Options Menu**
-    * */
-/*
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.main_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch(item.getItemId())
-        {
-            //Switch to delete mode.
-            case R.id.menu_item_delete:
-                //Change the FloatingActionButton to 'trash' and change the actionbar as needed.
-                mMode = MODE_DELETE;
-                //mAddShiftButton.setImageResource(R.drawable.ic_delete_white_24dp);
-                if(((AppCompatActivity)getActivity()).getSupportActionBar() != null)
-                {
-                    ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Delete Shift");
-                }
-
-                return true;
-            case R.id.menu_item_add:
-                //Change the FloatingActionButton to 'plus' and change the actionbar as needed.
-                mMode = MODE_ADD;
-                //mAddShiftButton.setImageResource(android.R.drawable.ic_input_add);
-                if(((AppCompatActivity)getActivity()).getSupportActionBar() != null)
-                {
-                    ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Tip Me");
-                }
-
-                return true;
-            case android.R.id.home:
-                //Change the FloatingActionButton to 'plus' and change the actionbar as needed for 'Home' mode.
-                mMode = MODE_ADD;
-                //mAddShiftButton.setImageResource(android.R.drawable.ic_input_add);
-                if(((AppCompatActivity)getActivity()).getSupportActionBar() != null)
-                {
-                    ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Tip Me");
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-    */
 }

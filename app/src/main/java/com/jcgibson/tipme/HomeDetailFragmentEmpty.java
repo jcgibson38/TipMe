@@ -28,6 +28,7 @@ public class HomeDetailFragmentEmpty extends Fragment
     {
         v = inflater.inflate(R.layout.fragment_home_detail_empty, parent, false);
 
+        //User pressed button to add shift, change to AddShiftFragment.
         mAddShiftButton = (FloatingActionButton)v.findViewById(R.id.add_shift_button);
         mAddShiftButton.setOnClickListener(new View.OnClickListener()
         {

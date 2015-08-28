@@ -7,11 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by Jordan on 7/22/2015.
+ *
+ * Methods to handle database operations.
  */
 public class DatabaseHandler extends SQLiteOpenHelper
 {
@@ -80,13 +82,12 @@ public class DatabaseHandler extends SQLiteOpenHelper
             cursor.moveToFirst();
         }
 
-        Shift shift = new Shift(cursor);
-        return shift;
+        return new Shift(cursor);
     }
 
-    public List<Shift> getAllShifts()
+    public Map<Date, Shift> getAllMapShifts()
     {
-        List<Shift> shiftList = new ArrayList<>();
+        Map<Date, Shift> shiftMap = new android.support.v4.util.ArrayMap<>();
 
         String selectQuery = "SELECT * FROM " + TABLE_SHIFTS;
 
@@ -98,12 +99,12 @@ public class DatabaseHandler extends SQLiteOpenHelper
             do
             {
                 Shift shift = new Shift(cursor);
-                shiftList.add(shift);
+                shiftMap.put(shift.getDate(), shift);
             }
             while(cursor.moveToNext());
         }
 
-        return shiftList;
+        return shiftMap;
     }
 
     public void deleteShift(Shift shift)

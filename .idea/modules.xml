@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TipMe v0.1.iml" filepath="$PROJECT_DIR$/TipMe v0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TipMe v0.0.iml" filepath="$PROJECT_DIR$/TipMe v0.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphwidget/graphwidget.iml" filepath="$PROJECT_DIR$/graphwidget/graphwidget.iml" />
       <module fileurl="file://$PROJECT_DIR$/numberpicker/numberpicker.iml" filepath="$PROJECT_DIR$/numberpicker/numberpicker.iml" />
