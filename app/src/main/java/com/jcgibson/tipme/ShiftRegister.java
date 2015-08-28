@@ -11,32 +11,40 @@ import java.util.List;
 
 /**
  * Created by Jordan on 7/20/2015.
+ *
+ * This is the Class that holds all of the registered Shifts.
  */
 public class ShiftRegister
 {
     private static ShiftRegister sShiftRegister;
+
     private Context mContext;
+
     private List<Shift> mShifts;
 
+    /*
+    * ShiftRegister constructor.
+    * */
     private ShiftRegister(Context context)
     {
         mContext = context;
-        DatabaseHandler db = new DatabaseHandler(context);
 
-        Log.d("COUNT", "Count is " + db.getShiftsCount());
+        //Load shifts from database, or create a blank List.
+        DatabaseHandler db = new DatabaseHandler(context);
         if(db.getShiftsCount() != 0)
         {
             mShifts = db.getAllShifts();
-            Log.d("DBLOG", "Shifts loaded from database into ShiftRegister.");
         }
         else
         {
             mShifts = new ArrayList<>();
-            Log.d("DBLOG", "No shifts found, creating new ShiftRegister.");
         }
         db.close();
     }
 
+    /*
+    * Get the static ShiftRegister.
+    * */
     public static ShiftRegister get(Context context)
     {
         if(sShiftRegister == null)
@@ -46,10 +54,22 @@ public class ShiftRegister
         return sShiftRegister;
     }
 
+    /*
+    * Getters
+    * */
+
     public List<Shift> getShifts()
     {
         return mShifts;
     }
+
+    /*
+    * Setters
+    * */
+
+    /*
+    * Other Methods
+    * */
 
     public void addShift(Shift shift)
     {
@@ -61,6 +81,11 @@ public class ShiftRegister
         mShifts.remove(shift);
     }
 
+    /*
+    * This method looks through the ShiftRegister for a Shift that matches the specified date.
+    *
+    * @param date -> The date to compare to the dates of the Shifts in the ShiftRegister looking for a matching date.
+    * */
     public Shift lookupShiftByDate(Date date)
     {
         Calendar cal = Calendar.getInstance();
@@ -88,44 +113,5 @@ public class ShiftRegister
                 s = shift;
             }
         }
-    }
-
-
-    public List<Shift> getWeeksShifts(Shift shift, List<Shift> shifts)
-    {
-        List<Shift> mList = new ArrayList<>();
-        Date date = shift.getDate();
-        Date weekStart;
-        Date weekEnd;
-
-        int year = date.getYear();
-        int month = date.getMonth();
-        int day = date.getDate();
-
-        Log.d("TAG", "Given shift is " + date.toString());
-        Log.d("TAG", "day " + day);
-        GregorianCalendar g = new GregorianCalendar(year + 1900, month, day);
-        Log.d("TAG", "Given shift is " + g.getTime().toString());
-        while(g.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
-        {
-            //Roll to sunday
-            g.roll(Calendar.DAY_OF_WEEK, false);
-            Log.d("TAG", "Roll " + g.getTime().toString());
-        }
-        weekStart = g.getTime();
-        Log.d("TAG", "WeekStart " + weekStart.toString());
-        g.add(Calendar.DAY_OF_WEEK, 6);
-        weekEnd = g.getTime();
-        Log.d("TAG", "weekEnd " + weekEnd.toString());
-
-        for(Shift s : mShifts)
-        {
-            if(s.getDate().compareTo(weekEnd) <=0  && (s.getDate().compareTo(weekStart) >= 0))
-            {
-                mList.add(s);
-            }
-        }
-        Log.d("TAG", "Found " + mList.size() + " shifts this week.");
-        return mList;
     }
 }

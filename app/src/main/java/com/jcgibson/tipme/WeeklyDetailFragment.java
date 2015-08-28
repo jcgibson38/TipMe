@@ -31,9 +31,6 @@ public class WeeklyDetailFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_detail_weekly, parent, false);
 
-        //Get all of the shifts from this week.
-        mWeekShifts = ShiftRegister.get(getActivity()).getWeeksShifts(mCurrentShift, ShiftRegister.get(getActivity()).getShifts());
-
         return v;
     }
 }
